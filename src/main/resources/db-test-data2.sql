@@ -1,0 +1,1 @@
+insert into user values(2, 'u2');
