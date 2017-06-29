@@ -6,30 +6,42 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import yuwei35kd.springmultidatasource.aop.DataSource;
+import yuwei35kd.springmultidatasource.bean.User;
 import yuwei35kd.springmultidatasource.mapper.UserMapper;
+import yuwei35kd.springmultidatasource.mapper.UserMapper2;
 
 @Service
 public class UserService {
 	@Resource
 	private UserMapper userMapper;
+	@Resource
+	private UserMapper2 userMapper2;
 	
 	public List<Map<String,Object>> findUsers1(){
 		return userMapper.findUsers();
 	}
 	
-	@DataSource("source2")
 	public List<Map<String,Object>> findUsers2(){
-		return userMapper.findUsers();
+		return userMapper2.findUsers();
 	}
 	
-	public int clear1(){
-		return userMapper.clear();
+	public void clearInit(){
+		userMapper.clearInit();
+		userMapper2.clearInit();
 	}
 	
-	@DataSource("source2")
-	public int clear2(){
-		return userMapper.clear();
+	@Transactional
+	public void create(User user){
+		userMapper.create(user);
+		userMapper2.badCreate(user);
 	}
+	
+	@Transactional
+	public void create2(User user){
+		userMapper2.create(user);
+		userMapper.badCreate(user);
+	}
+	
 }

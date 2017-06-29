@@ -58,7 +58,7 @@ public class MybatisConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
-    @Bean
+    @Bean("transactionManager")
     public PlatformTransactionManager transactionManager(DynamicDataSource dynamicDataSource) {
         return new DataSourceTransactionManager(dynamicDataSource);
     }

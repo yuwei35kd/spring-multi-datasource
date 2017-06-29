@@ -6,8 +6,8 @@ import java.util.Map;
 import yuwei35kd.springmultidatasource.aop.DataSource;
 import yuwei35kd.springmultidatasource.bean.User;
 
-@DataSource("source1")
-public interface UserMapper {
+@DataSource("source2")
+public interface UserMapper2 {
 	public List<Map<String, Object>> findUsers();
 	
 	public int clearInit();
@@ -15,5 +15,4 @@ public interface UserMapper {
 	public int create(User user);
 	
 	public int badCreate(User user);
-	
 }

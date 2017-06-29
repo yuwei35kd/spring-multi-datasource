@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import yuwei35kd.springmultidatasource.SpringMultiDatasourceApplication;
+import yuwei35kd.springmultidatasource.bean.User;
 import yuwei35kd.springmultidatasource.service.UserService;
 
 @RunWith(SpringRunner.class)
@@ -39,9 +40,24 @@ public class UserDaoTest{
 		Assert.assertTrue(id==2);
 	}
 	
+	@Test
+	public void testTransactional(){
+		User user = new User();
+		user.setUserId(3);
+		user.setName("u3");
+		userService.create(user);
+	} 
+	
+	@Test
+	public void testTransactional2(){
+		User user = new User();
+		user.setUserId(4);
+		user.setName("u4");
+		userService.create2(user);
+	}
+	
 	@AfterClass
 	public static void clear(){
-		userService.clear1();
-		userService.clear2();
+		userService.clearInit();
 	}
 }
