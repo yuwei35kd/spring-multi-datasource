@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-@ImportResource("classpath:tx-advice.xml")
+//@ImportResource("classpath:tx-advice.xml")
 @EnableTransactionManagement
 public class SpringMultiDatasourceApplication {
 
