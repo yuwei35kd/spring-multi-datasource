@@ -20,6 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Spring Boot 默认集成事务，所以无须手动开启使用 @EnableTransactionManagement 注解，
  * 就可以用 @Transactional注解进行事务管理。
  * 
+ * Spring, MyBatis 多数据源的配置和管理
+ * http://www.cnblogs.com/digdeep/p/4512368.html
+ * 
  * https://stackoverflow.com/questions/14068525/javaconfig-replacing-aopadvisor-and-txadvice
  */
 @SpringBootApplication
