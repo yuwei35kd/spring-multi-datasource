@@ -56,8 +56,8 @@ public class UserDaoTest{
 		userService.create2(user);
 	}
 	
-	@AfterClass
+	/*@AfterClass
 	public static void clear(){
 		userService.clearInit();
-	}
+	}*/
 }

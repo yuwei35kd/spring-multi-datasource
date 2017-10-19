@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import yuwei35kd.springmultidatasource.mapper.UserMapper;
 import yuwei35kd.springmultidatasource.mapper.UserMapper2;
 
 @Service
+//@Transactional
 public class UserService {
 	@Resource
 	private UserMapper userMapper;

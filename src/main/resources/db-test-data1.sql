@@ -1,1 +1,1 @@
-insert into user values(1, 'u1');
+insert into user1 values(1, 'u1');
