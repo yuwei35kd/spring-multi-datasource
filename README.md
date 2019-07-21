@@ -20,4 +20,15 @@ DynamicDataSource继承AbstractRoutingDataSource，并实现自定义获取数�
   
 单元测试UserDaoTest  
 
+```text
+暂时不支持事务，后续需要继续优化！！！！！可参考文章
+
+切换数据源时判断事务的传播方式
+https://blog.csdn.net/lij231/article/details/82934588
+
+springboot+mybatis解决多数据源切换事务控制不生效的问题
+https://blog.csdn.net/gaoshili001/article/details/79378902
+
+```
+
 

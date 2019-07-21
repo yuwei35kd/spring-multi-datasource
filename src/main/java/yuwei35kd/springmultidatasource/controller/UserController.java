@@ -5,18 +5,28 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import yuwei35kd.springmultidatasource.mapper.UserMapper;
+import yuwei35kd.springmultidatasource.bean.User;
+import yuwei35kd.springmultidatasource.service.UserService;
 
 @RestController
 public class UserController {
 	@Resource
-	private UserMapper userMapper;
+	private UserService userService;
 	
-	@RequestMapping("findUser")
+	@GetMapping("findUser")
 	public List<Map<String,Object>> findUser(){
-		return userMapper.findUsers();
+		return userService.findUsers1();
 	}
+
+	@GetMapping("create")
+    public String create(){
+        User user = new User();
+        user.setUserId(2);
+        user.setName("u2");
+	    userService.create(user);
+	    return "创建成功！";
+    }
 }

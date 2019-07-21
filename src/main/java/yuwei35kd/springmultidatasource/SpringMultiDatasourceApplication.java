@@ -1,11 +1,9 @@
 package yuwei35kd.springmultidatasource;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.core.annotation.Order;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -30,13 +28,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 比方两个数据源：一个是mysql,一个是oracle
  * 此时如果在service层开启事务，而数据源切换在dao层，这时就会报错。
  * 最好是开始事务和切换数据源都在service上面。而DataSourceAspect上面的@Order(0)决定了切换数据源会在开始事务之前。
- * 
+ *
+ *  切换数据源时判断事务的传播方式
+ *  https://blog.csdn.net/lij231/article/details/82934588
+ *
+ *  springboot+mybatis解决多数据源切换事务控制不生效的问题
+ *  https://blog.csdn.net/gaoshili001/article/details/79378902
  * 
  */
-@SpringBootApplication
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 @EnableAspectJAutoProxy
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-//@ImportResource("classpath:tx-advice.xml")
 @EnableTransactionManagement
 public class SpringMultiDatasourceApplication {
 

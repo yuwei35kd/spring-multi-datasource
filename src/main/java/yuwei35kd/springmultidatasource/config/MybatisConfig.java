@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import yuwei35kd.springmultidatasource.transaction.MultiDataSourceTransactionFactory;
 
 @Configuration
 @MapperScan("yuwei35kd.springmultidatasource.mapper")
@@ -52,6 +53,7 @@ public class MybatisConfig {
     public SqlSessionFactory sqlSessionFactoryBean(DynamicDataSource dynamicDataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dynamicDataSource);
+        sqlSessionFactoryBean.setTransactionFactory(new MultiDataSourceTransactionFactory());
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
         sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/mybatis.xml"));
@@ -62,7 +64,7 @@ public class MybatisConfig {
     public PlatformTransactionManager transactionManager(DynamicDataSource dynamicDataSource) {
         return new DataSourceTransactionManager(dynamicDataSource);
     }
-    
+
     @Bean
     public DynamicDataSource dynamicDataSource(@Qualifier("source1") DataSource dataSource1
     		,@Qualifier("source2") DataSource dataSource2){

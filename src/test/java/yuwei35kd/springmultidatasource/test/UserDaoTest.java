@@ -43,16 +43,16 @@ public class UserDaoTest{
 	@Test
 	public void testTransactional(){
 		User user = new User();
-		user.setUserId(3);
-		user.setName("u3");
+		user.setUserId(2);
+		user.setName("u2");
 		userService.create(user);
 	} 
 	
 	@Test
 	public void testTransactional2(){
 		User user = new User();
-		user.setUserId(4);
-		user.setName("u4");
+		user.setUserId(1);
+		user.setName("u1");
 		userService.create2(user);
 	}
 	

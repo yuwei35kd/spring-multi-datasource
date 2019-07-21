@@ -6,7 +6,7 @@ import java.util.Map;
 import yuwei35kd.springmultidatasource.aop.DataSource;
 import yuwei35kd.springmultidatasource.bean.User;
 
-@DataSource("source2")
+//@DataSource("source2")
 public interface UserMapper2 {
 	public List<Map<String, Object>> findUsers();
 	

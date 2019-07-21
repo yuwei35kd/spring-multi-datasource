@@ -18,7 +18,7 @@ import yuwei35kd.springmultidatasource.config.DynamicDataSourceHolder;
 @Order(0)  // execute before @Transactional
 public class DataSourceAspect {
 	
-	@Pointcut("execution(* yuwei35kd.springmultidatasource.mapper.*.*(..))")
+	@Pointcut("execution(* yuwei35kd.springmultidatasource.service.*.*(..))")
 	public void pointCut(){}
 	
 	@After("pointCut()")
@@ -33,7 +33,7 @@ public class DataSourceAspect {
 	 * @throws Exception
 	 */
 	@Before("pointCut()")
-	public void intercept(JoinPoint point) throws Exception {
+	public void intercept(JoinPoint point){
 		Class<?> target = point.getTarget().getClass();
 		MethodSignature signature = (MethodSignature) point.getSignature();
 		// 默认使用目标类型的注解，如果没有则使用其实现接口的注解
