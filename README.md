@@ -16,19 +16,5 @@ DynamicDataSource继承AbstractRoutingDataSource，并实现自定义获取数�
   
 自定义注解@DataSource  
   
-使用spring aop根据方法上注解的数据源，在调用dao层之前切换数据源  
-  
-单元测试UserDaoTest  
-
-```text
-暂时不支持事务，后续需要继续优化！！！！！可参考文章
-
-切换数据源时判断事务的传播方式
-https://blog.csdn.net/lij231/article/details/82934588
-
-springboot+mybatis解决多数据源切换事务控制不生效的问题
-https://blog.csdn.net/gaoshili001/article/details/79378902
-
-```
-
+不能再dao层切换数据源，因为在service层事务已开启。当然，如果不考虑事务，在哪里切换数据源都是ok的
 

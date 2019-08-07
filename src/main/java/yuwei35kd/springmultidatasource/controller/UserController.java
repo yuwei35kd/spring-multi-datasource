@@ -10,23 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import yuwei35kd.springmultidatasource.bean.User;
 import yuwei35kd.springmultidatasource.service.UserService;
+import yuwei35kd.springmultidatasource.service.UserService2;
 
 @RestController
 public class UserController {
 	@Resource
 	private UserService userService;
+	@Resource
+    private UserService2 userService2;
 	
-	@GetMapping("findUser")
+	@GetMapping("/findUser")
 	public List<Map<String,Object>> findUser(){
-		return userService.findUsers1();
+		return userService.findUsers();
 	}
 
-	@GetMapping("create")
-    public String create(){
-        User user = new User();
-        user.setUserId(2);
-        user.setName("u2");
-	    userService.create(user);
-	    return "创建成功！";
+    @GetMapping("/findUser2")
+    public List<Map<String,Object>> findUser2(){
+        return userService2.findUsers();
+    }
+
+    @GetMapping("/badCreate")
+    public void badCreate(){
+	    userService.badCreate();
     }
 }

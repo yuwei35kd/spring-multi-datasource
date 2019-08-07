@@ -8,12 +8,11 @@ import yuwei35kd.springmultidatasource.bean.User;
 
 //@DataSource("source1")
 public interface UserMapper {
-	public List<Map<String, Object>> findUsers();
+	List<Map<String, Object>> findUsers();
 	
-	public int clearInit();
+	int clearInit();
 	
-	public int create(User user);
+	int create(User user);
 	
-	public int badCreate(User user);
-	
+	int badCreate(User user);
 }

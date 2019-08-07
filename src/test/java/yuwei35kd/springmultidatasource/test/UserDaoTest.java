@@ -28,34 +28,34 @@ public class UserDaoTest{
 	
 	@Test
 	public void testSource1(){
-		List<Map<String,Object>> users = userService.findUsers1();
+		List<Map<String,Object>> users = userService.findUsers();
 		int id = (int) users.get(0).get("user_id");
 		Assert.assertTrue(id==1);
 	}
 	
 	@Test
 	public void testSource2(){
-		List<Map<String,Object>> users = userService.findUsers2();
+		List<Map<String,Object>> users = userService.findUsers();
 		int id = (int) users.get(0).get("user_id");
 		Assert.assertTrue(id==2);
 	}
 	
-	@Test
+	/*@Test
 	public void testTransactional(){
 		User user = new User();
 		user.setUserId(2);
 		user.setName("u2");
 		userService.create(user);
-	} 
-	
+	}
+
 	@Test
 	public void testTransactional2(){
 		User user = new User();
 		user.setUserId(1);
 		user.setName("u1");
 		userService.create2(user);
-	}
-	
+	}*/
+
 	/*@AfterClass
 	public static void clear(){
 		userService.clearInit();

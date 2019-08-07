@@ -15,57 +15,27 @@ import yuwei35kd.springmultidatasource.mapper.UserMapper;
 import yuwei35kd.springmultidatasource.mapper.UserMapper2;
 
 @Service
+@DataSource("source1")
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserService {
 	@Resource
 	private UserMapper userMapper;
 	@Resource
-	private UserMapper2 userMapper2;
-	
-	public List<Map<String,Object>> findUsers1(){
+    private UserService2 userService2;
+
+	public List<Map<String,Object>> findUsers(){
 		return userMapper.findUsers();
 	}
 	
-	public List<Map<String,Object>> findUsers2(){
-		return userMapper2.findUsers();
-	}
-	
-	public void clearInit(){
-		userMapper.clearInit();
-		userMapper2.clearInit();
-	}
-	
-	@Transactional
-	public void create(User user){
-        userMapperCreate(user);
-        userMapper2BadCreate(user);
-	}
-
-    @Transactional
-	public void create2(User user){
-        userMapper2Create(user);
-		userMapperBadCreate(user);
-	}
-
-	@DataSource("source1")
-    @Transactional(propagation = Propagation.REQUIRED)
-	public int userMapperCreate(User user){
-	    return userMapper.create(user);
+    public void badCreate(){
+	    User user = new User();
+	    user.setUserId(1000);
+	    user.setName("hahaha");
+	    userMapper.create(user);
+	    try{
+            userService2.badCreate(user);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-
-    @DataSource("source2")
-    public int userMapper2Create(User user){
-	    return userMapper2.create(user);
-    }
-
-    @DataSource("source1")
-    public int userMapperBadCreate(User user){
-	    return userMapper.badCreate(user);
-    }
-
-    @DataSource("source2")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public int userMapper2BadCreate(User user){
-	    return userMapper2.badCreate(user);
-    }
-	
 }

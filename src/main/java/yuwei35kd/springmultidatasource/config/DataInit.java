@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
-@Configuration
+//@Configuration
 public class DataInit {
 	@Value("classpath:db-schema1.sql")
 	private Resource schemaScript1;
