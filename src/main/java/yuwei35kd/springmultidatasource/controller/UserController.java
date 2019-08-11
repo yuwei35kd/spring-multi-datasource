@@ -29,6 +29,11 @@ public class UserController {
         return userService2.findUsers();
     }
 
+    @GetMapping("/findAll")
+    public List<Map<String,Object>> findAll(){
+	    return userService.findAll();
+    }
+
     @GetMapping("/badCreate")
     public void badCreate(){
 	    userService.badCreate();

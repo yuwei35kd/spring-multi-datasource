@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,5 +38,15 @@ public class UserService {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    public List<Map<String, Object>> findAll() {
+        List<Map<String,Object>> user1List = findUsers();
+        List<Map<String,Object>> user2List = userService2.findUsers();
+        List<Map<String,Object>> all = Lists.newArrayList();
+        all.addAll(user1List);
+        all.addAll(user2List);
+        return all;
     }
 }
