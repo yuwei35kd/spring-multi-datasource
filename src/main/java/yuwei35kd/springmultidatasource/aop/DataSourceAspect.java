@@ -18,8 +18,8 @@ import yuwei35kd.springmultidatasource.config.DynamicDataSourceHolder;
 @Order(0)  // execute before @Transactional
 public class DataSourceAspect {
 
-    @Pointcut("execution(* yuwei35kd.springmultidatasource.mapper.*.*(..))")
-	//@Pointcut("execution(* yuwei35kd.springmultidatasource.service.*.*(..))")
+    //@Pointcut("execution(* yuwei35kd.springmultidatasource.mapper.*.*(..))")
+	@Pointcut("execution(* yuwei35kd.springmultidatasource.service.*.*(..))")
 	public void pointCut(){}
 	
 	@After("pointCut()")
